@@ -1,0 +1,501 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: #ddd;
+}
+
+header {
+    background: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: fit-content;
+    width: 100%;
+    padding: 0 0 10px 0;
+}
+
+.principal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+header .principal h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+header div img {
+    width: 175px;
+    height: 100px;
+    ;
+}
+
+header .principal .logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+    height: 10vh;
+}
+
+header .principal .botoes {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+header .principal .botoes button {
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10%;
+    margin: 0 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.botoes input[type="file"]{
+    background-color: darkgray;
+    padding:15px;
+    border-radius:10px;
+}
+
+.salvar,
+.login {
+    background: rgba(0, 0, 255, 0.4);
+}
+
+.salvar:hover,
+.login:hover {
+    background: lightblue
+}
+
+.sair {
+    background: gray;
+}
+
+.sair:hover {
+    background: rgba(255, 0, 0, 0.6)
+}
+
+.logado {
+    width: 85%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nome {
+    font-size: 1.75rem;
+    color: white
+}
+
+.botoes2 {
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botoes2 button {
+    width: 150px;
+    height: 40px;
+    border-radius: 10%;
+    border: none;
+    background: rgba(80, 130, 0, 1);
+    margin: 0 10px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.addItens:hover,
+.listVendas:hover {
+    background: rgba(80, 130, 0, 0.6);
+}
+
+main {
+    width: 100%;
+}
+
+.textoInicial{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}
+
+.servicos {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.produtos {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modelo0 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 500px;
+    width: 275px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px gray;
+    background-color: whitesmoke;
+}
+
+.modelo0 .tipo {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    height: 75px;
+    width: 100%;
+}
+
+.modelo0 img {
+    width: 250px;
+    height: 250px;
+}
+
+.btn-produto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 0.5px solid gray
+}
+
+.btn-produto button {
+    margin: 10px 0 0 0;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+.excluir {
+    background: red;
+}
+
+.excluir:hover {
+    background: rgba(255, 0, 0, 0.7);
+}
+
+.vender {
+    background: blue;
+}
+
+.vender:hover {
+    background: rgba(0, 0, 200, 0.7)
+}
+
+.modelo0 .preco {
+    font-size: 1.5rem;
+}
+
+.overlay-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+/* Modal de login */
+.modalLogin, .modalCard, .modalVenda,.modalListaVendas{
+    min-width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    padding: 10px;
+}
+
+.modalLogin form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalLogin form input{
+    border:none;
+    background-color: silver;
+    border-radius: 10px;
+    padding:10px;
+    height: 50px;
+    margin:10px 0;
+}
+
+.modalLoginBtn, .modalCardBtn,.modalVendaBtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modalLoginBtn button, .modalCardBtn button,.modalVenda button{
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    border:none;
+    cursor: pointer;
+}
+
+.entrarLogin, .criarNovo,.concluirVenda{
+    background-color: rgba(83, 202, 97, 1);
+    font-size: 20px;
+}
+
+.entrarLogin:hover,.criarNovo:hover,.concluirVenda:hover{
+    background-color: rgba(83, 202, 97, 0.7)
+}
+
+.cancelarLogin, .cancelarNovo,.cancelarVenda{
+    background-color: red;
+    font-size: 20px;
+}
+
+.cancelarLogin:hover, .cancelarNovo:hover,.cancelarVenda:hover{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+/* Modal de novo serviço */
+.modalCard form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.modalCard form input{
+    margin: 10px 0;
+    border:none;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: silver;
+}
+
+.modalCard form textarea{
+    padding:10px;
+    margin:10px 0   ;
+    border:none;
+    border-radius: 10px;
+    background-color: silver;
+}
+
+/* Modal de criação de venda */
+.modalVenda form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.modalVenda form input{
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius: 10px;
+    background-color: silver;
+}
+
+/* Classe Modal mostrar vendas */
+
+.modalListaVendas{
+    min-width: 50vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.5);
+    padding: 10px;
+    overflow:auto;
+}
+
+.modalListaVendas table{
+    width: 100%;
+    margin: 20px 0;
+    
+}
+
+.modalListaVendas table td{
+    margin:0 10px;  
+    
+}
+
+.modalListaVendas table td button{
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="datetime-local"]{
+    width: 100%;
+}
+
+/* Classe para a ocultação de coisas */
+.ocultar {
+    display: none;
+}
+
+
+
+@media(max-width:1250px) {
+    header .principal .logo {
+        width: 60%;
+    }
+}
+
+@media(max-width:1100px) {
+    header .principal .botoes button {
+        font-size: 14px;
+    }
+
+    .botoes2 button {
+        font-size: 14px;
+    }
+
+    .produtos {
+        width: 79%;
+    }
+}
+
+@media(max-width:930px) {
+    header .principal h1 {
+        font-size: 1.75rem;
+    }
+
+    header .logado {
+        width: 92%;
+    }
+
+    .botoes2 {
+        width: 35%
+    }
+
+    .nome {
+        font-size: 1.25rem;
+    }
+
+}
+
+@media(max-width:860px) {
+    header .principal .logo {
+        width: 80%;
+        justify-content: space-evenly;
+    }
+}
+
+@media(max-width:770px) {
+    .produtos {
+        width: 70%;
+    }
+}
+
+@media(max-width:686px) {
+    header div img {
+        width: 125px;
+        height: 75px;
+    }
+    
+    header .principal h1 {
+        font-size: 1.25rem;
+    }
+
+    .nome {
+        font-size: 1rem;
+    }
+
+    header .principal .botoes {
+        width: 30%;
+    }
+
+    header .principal .botoes button {
+        width: 100px;
+    }
+
+    header .logado{
+        width: 85%;
+    }
+}
+
+@media(max-width:525px){
+    header .principal{
+        width: 90%;
+    }
+
+    header .logado{
+        width: 90%;
+    }
+}
+
+@media(max-width:467px){
+    header .principal{
+        flex-direction: column;
+    }
+
+    header .principal .logo{
+        width: 90%;
+    }
+
+    header .principal .botoes{
+        width: 50%;
+    }
+
+    header .logado {
+        flex-direction: column;
+    }
+
+    .nome{
+        margin:10px 0
+    }
+
+    .botoes2{
+        width: 70%;
+    }
+
+    .servicos{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .produtos{
+        width: 80%;
+    }
+}
+

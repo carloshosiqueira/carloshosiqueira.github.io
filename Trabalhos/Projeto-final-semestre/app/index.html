@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Já vai Manutenções</title>
+    <link rel="shortcut icon" href="../assets/logoSite.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- Css do site 
+
+1- Dar mais espaçamento para o nome de quem vendeu e o nome do item na tabela de vendas
+2- Achar uma paleta de cores melhor
+3- Trocar as fontes
+
+-->
+<body>
+    <header>
+        <div class="principal">
+            <div class="logo">
+                <img src="../assets/logoSite.png" alt="logoSite">
+                <h1>Já vai Manutenções</h1>
+            </div>
+            <div class="botoes">
+                <input type="file" id="abrir" accept=".json">
+                <button class="login ocultar" id="login" onclick="modalLogin.classList.remove('ocultar')">Login</button>
+                <button class="sair ocultar" id="sair" onclick="logout()">Sair</button>
+                <button class="salvar ocultar" id="salvar" onclick="download()">Salvar</button>
+            </div>
+        </div>
+        <div class="logado ocultar" id="logado">
+            <h3 id="nome" class="nome "></h3>
+            <div class="botoes2">
+                <button id="item" class="addItens" onclick="modalNovo.classList.remove('ocultar')">Adicionar
+                    Itens</button>
+                <button class="listVendas" onclick="listaVendas.classList.remove('ocultar');preencherVendas()">Listar
+                    Vendas</button>
+            </div>
+        </div>
+    </header>
+    <main>
+
+        <section class="servicos">
+            <div class="produtos">
+                <div class="textoInicial">
+                    <div>
+                        <h2>Trabalhando com dados locais</h2>
+                        <p>Sistema de exemplo para aulas de Web Design, com HTML e JavaScript</p>
+                        <p>Para executar o sistema faça upload do arquivo JSON com dados iniciais de teste, seguindo o
+                            modelo a
+                            seguir: <a download href="../bd/dadosManutencao.json">dadosManutencao.json</a>
+                        </p>
+                        <p>Faça download do modelo e carrege o sistema com ele clicando em <b>Escolher arquivo</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+
+
+    <!--Modal para criar um novo card-->
+    <div class="overlay-modal ocultar" id="modalNovo">
+        <div class="modalCard">
+            <h2>Novo Serviço</h2>
+            <form id="formNovo">
+                <input type="text" name="tituloCard" placeholder="Título" required>
+                <textarea name="descricao" placeholder="Descrição" required></textarea>
+                <input type="number" name="preco" placeholder="Preço" step="0.1">
+                <textarea name="img" placeholder="Coloque o link da imagem do serviço"></textarea>
+                <div class="modalCardBtn">
+                    <button type="button" onclick="modalNovo.classList.add('ocultar')"
+                        class="cancelarNovo">Cancelar</button>
+                    <button type="submit" class="criarNovo">Criar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de login -->
+    <div class="overlay-modal ocultar" id="modalLogin">
+        <div class="modalLogin">
+            <h2>Login</h2>
+            <form id="formLogin">
+                <input type="text" name="email" placeholder="Email" required>
+                <input type="password" name="senha" placeholder="Senha" required>
+                <div class="modalLoginBtn">
+                    <button type="button" class="cancelarLogin"
+                        onclick="modalLogin.classList.add('ocultar')">Cancelar</button>
+                    <button type="submit" class="entrarLogin">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Venda -->
+    <div class="overlay-modal ocultar" id="modalVenda">
+        <div class="modalVenda">
+            <h2>Registrar Venda</h2>
+            <form id="formVenda">
+                <input type="hidden" name="id">
+                <label>Quantidade:</label>
+                <input type="number" placeholder="Quantidade" name="quantidade" min="0" required>
+                <label>Preço R$:</label>
+                <input type="number" placeholder="Preço (R$)" name="preco" step="0.1" min="0" required>
+                <label>Total:</label>
+                <input type="number" placeholder="Total" name="total" disabled>
+                <div class="modalVendaBtn">
+                    <button type="button" class="cancelarVenda"
+                        onclick="modalVenda.classList.add('ocultar')">Cancelar</button>
+                    <button type="submit" class="concluirVenda">Concluir Venda</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de lista de vendas -->
+    <div class="overlay-modal ocultar" id="listaVendas">
+        <div class="modalListaVendas">
+            <h2>Registro de Vendas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Usuário</th>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                        <th>Valor unitário</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="vendas">
+                </tbody>
+            </table>
+            <button type="button" onclick="listaVendas.classList.add('ocultar')">Fechar</button>
+        </div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
