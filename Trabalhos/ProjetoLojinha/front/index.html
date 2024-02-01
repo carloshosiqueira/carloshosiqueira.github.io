@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style3.css">
+    <title>Cantina</title>
+</head>
+<body>
+    <header>
+        <h1>Listar todos os produtos</h1>
+    </header>
+    <nav>
+        <a href="./index.html">Listar todos</a>
+        <a href="./cadastro.html">Cadastrar</a>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+            <tbody id="dados">
+            </tbody>
+        </table>
+    </main>
+    <footer>Por Carlos e Cicero</footer>
+</body>
+<script>
+    const dados = document.getElementById('dados');
+    fetch('http://localhost:3000/produtos')
+        .then(res => res.json())
+        .then(res => {
+            res.forEach(prod => {
+                dados.innerHTML += `
+                    <tr>
+                        <td>${prod.id}</td>
+                        <td>${prod.nome}</td>
+                        <td>R$ ${prod.preco.toFixed(2)}</td>
+                        <td>${prod.quantidade} Unidades</td>
+                    </tr>
+                `;
+            });
+        });
+</script>
+</html>
